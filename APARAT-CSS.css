@@ -1,6 +1,6 @@
 /* ==========================================================================
    APARAT — bazar fotoaparátů, Shoptet šablona Techno (body.template-07)
-   Verze 0.2. Všechna pravidla mají prefix "html body.template-07", protože
+   Verze 0.3. Všechna pravidla mají prefix "html body.template-07", protože
    nativní CSS šablony (main-07.less) jinak přebíjí třídové selektory.
    ========================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&family=Instrument+Serif:ital@1&display=swap');
@@ -22,6 +22,7 @@ html body.template-07{
 }
 html body.template-07 .overall-wrapper,
 html body.template-07 #content-wrapper{background:transparent}
+html body.template-07,
 html body.template-07 *{font-family:var(--gp-font)}
 html body.template-07 h1,html body.template-07 .h1,
 html body.template-07 h2,html body.template-07 h3,

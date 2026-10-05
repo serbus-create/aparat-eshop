@@ -1,6 +1,6 @@
 /* ==========================================================================
    APARAT — bazar fotoaparátů, Shoptet šablona Techno (body.template-07)
-   Verze 0.3. Všechna pravidla mají prefix "html body.template-07", protože
+   Verze 0.4. Všechna pravidla mají prefix "html body.template-07", protože
    nativní CSS šablony (main-07.less) jinak přebíjí třídové selektory.
    ========================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&family=Instrument+Serif:ital@1&display=swap');
@@ -54,11 +54,29 @@ html body.template-07 #navigation .menu-level-1 > li:hover > a,
 html body.template-07 #navigation .menu-level-1 > li.active > a{background:var(--gp-lav);color:var(--gp-navy)}
 html body.template-07 .navigation-buttons a.cart-count{background:var(--gp-navy)}
 
-/* 5. Úvodní banner a pás výhod */
-html body.template-07 .banners-row #carousel,
-html body.template-07 .banners-row .next-to-carousel-banners .banner-wrapper{border:1px solid var(--gp-navy)}
+/* 5. Úvodní banner: jeden velký pás přes celou šířku (podle varianty H).
+   Obrázky banneru se mění v administraci. Postranní dva bannery se schovají.
+   Text přes banner (extended-banner-texts) je připravený, až se vyplní v administraci. */
+html body.template-07 .banners-row > .col-sm-8{width:100%;max-width:100%;flex:0 0 100%;float:none}
+html body.template-07 .banners-row > .col-sm-4{display:none}
+html body.template-07 .banners-row #carousel{
+  background:var(--gp-lav);border:1px solid var(--gp-navy);height:min(36vw,440px);position:relative;overflow:hidden;
+}
+html body.template-07 .banners-row #carousel .carousel-inner,
+html body.template-07 .banners-row #carousel .item{height:100%}
+html body.template-07 .banners-row #carousel .item > a{display:block;height:100%;position:relative}
+html body.template-07 .banners-row #carousel .item img{
+  width:100%;height:100%;object-fit:contain;object-position:right center;
+}
+html body.template-07 .banners-row #carousel .extended-banner-texts{
+  position:absolute;left:36px;top:50%;transform:translateY(-50%);max-width:46%;color:var(--gp-navy);
+}
+html body.template-07 .banners-row #carousel a.carousel-control{
+  width:44px;height:44px;top:50%;margin-top:-22px;background:var(--gp-navy);color:#fff;opacity:1;border-radius:0;
+}
 html body.template-07 .benefitBanner__item{background:var(--gp-lav-t);border:1px solid var(--gp-navy)}
 html body.template-07 .benefitBanner__title{font-weight:500;color:var(--gp-navy)}
+html body.template-07 .banners-row .next-to-carousel-banners .banner-wrapper{border:1px solid var(--gp-navy)}
 
 /* 6. Nadpisy sekcí na úvodní straně */
 html body.template-07 .homepage-group-title{font-size:18px;margin:32px 0 12px}

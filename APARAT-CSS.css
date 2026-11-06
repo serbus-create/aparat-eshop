@@ -1,6 +1,6 @@
 /* ==========================================================================
    APARAT — bazar fotoaparátů, Shoptet šablona Techno (body.template-07)
-   Verze 1.5 — styl podle vzoru (Mori Film Lab): bílý sloupec v černých
+   Verze 1.6 — styl podle vzoru (Mori Film Lab): bílý sloupec v černých
    rámečcích na světle šedém pozadí, pilulková tlačítka, zaoblené fotky v kartách.
    Prefix "html body.template-07" je nutný, nativní CSS šablony jinak přebíjí.
    Zaměření: úvodní strana. Kategorie, detail a košík zatím jen dědí tokeny.
@@ -57,6 +57,8 @@ html body.template-07 .top-navigation-bar strong{color:var(--gp-paper)}
 html body.template-07 header#header{
   position:static !important;background:var(--gp-paper);border-bottom:1px solid var(--gp-ink);
 }
+/* Dvouřádková hlavička jen na desktopu (od 992 px); na tabletu a telefonu zůstává nativní menu (hamburger). */
+@media (min-width:992px){
 html body.template-07 header#header .navigation-wrapper{
   display:flex;flex-wrap:wrap;align-items:center;padding:0;
 }
@@ -86,6 +88,7 @@ html body.template-07 #navigation .menu-level-1 > li.active > a{
 }
 html body.template-07 .navigation-buttons a.toggle-window,
 html body.template-07 .navigation-buttons a.cart-count{background:transparent;color:var(--gp-ink)}
+}
 
 /* 6. Úvodní banner: jedna velká fotka přes celý sloupec, bez bočních bannerů */
 html body.template-07.type-index main#content{padding:0}
@@ -129,7 +132,7 @@ html body.template-07 .homepage-group-title{
 
 /* 9. Produkty na úvodní straně: stejná mřížka 4 sloupců, karty oddělené linkou */
 html body.template-07.type-index .products-block{
-  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:0;
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:0 -1px 0 0;
 }
 html body.template-07.type-index .products-block > .product{
   width:auto;float:none;margin:0;padding:0;border-right:1px solid var(--gp-ink);border-bottom:1px solid var(--gp-ink);
@@ -157,6 +160,15 @@ html body.template-07.type-index .products-block .p .price-final,
 html body.template-07.type-index .products-block .p .price{font-size:12px;font-weight:400;color:var(--gp-ink)}
 html body.template-07.type-index .products-block .p .p-tools{display:none}
 html body.template-07.type-index .products-block .p .p-code{display:none}
+
+@media (max-width:1199px){
+  html body.template-07.type-index .products-block{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:767px){
+  :root{--gp-hero-h:70vw}
+  html body.template-07.type-index .products-block{grid-template-columns:repeat(2,minmax(0,1fr))}
+  html body.template-07 .homepage-group-title{font-size:20px;padding:14px 16px}
+}
 
 /* 10. Štítky (pilulky): sleva oranžová, novinka červenooranžová, ostatní černé */
 html body.template-07 .flag{

@@ -1,6 +1,6 @@
 /* ==========================================================================
    APARAT — bazar fotoaparátů, Shoptet šablona Techno (body.template-07)
-   Verze 3.1 — styl podle vzoru (Mori Film Lab): bílý sloupec v černých
+   Verze 3.2 — styl podle vzoru (Mori Film Lab): bílý sloupec v černých
    rámečcích na světle šedém pozadí, pilulková tlačítka, zaoblené fotky v kartách.
    Prefix "html body.template-07" je nutný, nativní CSS šablony jinak přebíjí.
    Zaměření: úvodní strana. Kategorie, detail a košík zatím jen dědí tokeny.
@@ -298,7 +298,8 @@ html body.template-07.type-detail .add-to-cart .quantity input.amount{
 html body.template-07.type-detail .add-to-cart .quantity button.decrease{order:1}
 html body.template-07.type-detail .add-to-cart .quantity button.increase{order:3}
 html body.template-07.type-detail .add-to-cart .quantity button{
-  position:relative;width:32px;height:32px;border:0;background:transparent;padding:0;font-size:0;line-height:1;cursor:pointer;
+  position:relative;top:auto;right:auto;bottom:auto;left:auto;margin:0;transform:none;
+  width:32px;height:32px;border:0;background:transparent;padding:0;font-size:0;line-height:1;cursor:pointer;
 }
 /* plus a minus kreslené linkami (písmo „−“ se v nahraném fontu nevykreslilo) */
 html body.template-07.type-detail .add-to-cart .quantity button::before{
@@ -316,6 +317,7 @@ html body.template-07.type-detail .p-details-bottom .p-final-price-wrapper{text-
 html body.template-07.type-detail table.detail-parameters{width:100%;margin:14px 0 0}
 html body.template-07.type-detail table.detail-parameters th,
 html body.template-07.type-detail table.detail-parameters td{font-size:13px;padding:8px 0;border:0;border-top:1px solid #d9d9d9;vertical-align:middle}
+html body.template-07.type-detail table.detail-parameters th,
 html body.template-07.type-detail table.detail-parameters .row-header-label{text-transform:none;font-weight:400;color:var(--gp-grey)}
 html body.template-07.type-detail table.detail-parameters a{color:var(--gp-ink);text-decoration:underline}
 html body.template-07.type-detail span.availability-label{background:transparent !important;color:var(--gp-ink) !important;padding:0;font-weight:400}

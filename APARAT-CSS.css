@@ -1,111 +1,162 @@
 /* ==========================================================================
    APARAT — bazar fotoaparátů, Shoptet šablona Techno (body.template-07)
-   Verze 0.5. Všechna pravidla mají prefix "html body.template-07", protože
-   nativní CSS šablony (main-07.less) jinak přebíjí třídové selektory.
+   Verze 1.0 — styl podle vzoru (Mori Film Lab): bílý sloupec v černých
+   rámečcích na světle šedém pozadí, pilulková tlačítka, zaoblené fotky v kartách.
+   Prefix "html body.template-07" je nutný, nativní CSS šablony jinak přebíjí.
+   Zaměření: úvodní strana. Kategorie, detail a košík zatím jen dědí tokeny.
    ========================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&family=Instrument+Serif:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&display=swap');
 
-/* 1. Tokeny */
+/* 1. Barvy (změna brandu = změna zde) */
 :root{
-  --gp-navy:#000057; --gp-lav:#8788e7; --gp-lav-t:#e6e6fa;
-  --gp-cream:#fbf5e4; --gp-grid:#f0e6cc; --gp-orange:#ff7a45;
+  --gp-ink:#000;          /* text, linky, hlavní tlačítka */
+  --gp-paper:#fff;        /* sloupec obsahu */
+  --gp-page:#f1f1f1;      /* pozadí kolem sloupce */
+  --gp-sale:#ff8900;      /* slevy, zvýraznění */
+  --gp-hot:#ff4e27;       /* důležité: novinky, newsletter, hover CTA */
+  --gp-grey:#757575;      /* vyprodáno, vedlejší text */
   --gp-font:'Hanken Grotesk',system-ui,sans-serif;
-  --gp-serif:'Instrument Serif',Georgia,serif;
-  --gp-banner-h:min(36vw,440px);
+  --gp-pill:120px;
+  --gp-hero-h:min(40vw,520px);
 }
 
-/* 2. Základ: krémový podklad s mřížkou, písmo, ostré rohy */
-html body.template-07{
-  background-color:var(--gp-cream);
-  background-image:linear-gradient(var(--gp-grid) 1px,transparent 1px),linear-gradient(90deg,var(--gp-grid) 1px,transparent 1px);
-  background-size:22px 22px;
-  color:var(--gp-navy);
-}
-html body.template-07 .overall-wrapper,
-html body.template-07 #content-wrapper{background:transparent}
+/* 2. Základ */
+html body.template-07{background:var(--gp-page);color:var(--gp-ink)}
 html body.template-07,
 html body.template-07 *{font-family:var(--gp-font)}
+html body.template-07 .overall-wrapper{
+  max-width:min(1358px,94%);margin:0 auto;background:var(--gp-paper);
+  border-left:1px solid var(--gp-ink);border-right:1px solid var(--gp-ink);
+}
+html body.template-07 #content-wrapper{background:transparent}
 html body.template-07 h1,html body.template-07 .h1,
 html body.template-07 h2,html body.template-07 h3,
-html body.template-07 h4,html body.template-07 .h4,
-html body.template-07 .category-title,
-html body.template-07 .homepage-group-title{
-  font-weight:500;text-transform:none;letter-spacing:-.01em;color:var(--gp-navy);
+html body.template-07 h4,html body.template-07 .h4{
+  font-weight:400;text-transform:none;letter-spacing:-.01em;color:var(--gp-ink);
 }
-html body.template-07 .btn,
-html body.template-07 .p,
-html body.template-07 .flag,
-html body.template-07 .box,
-html body.template-07 .banner-wrapper,
-html body.template-07 #carousel,
-html body.template-07 .benefitBanner__item{border-radius:0}
 
-/* 3. Horní pruh */
-html body.template-07 .top-navigation-bar{background:var(--gp-navy);color:#fff;font-size:11px;letter-spacing:.04em}
+/* 3. Tlačítka: pilulky. Hlavní = plná černá, ostatní = obrys */
+html body.template-07 .btn{
+  border-radius:var(--gp-pill);border:1px solid var(--gp-ink);background:transparent;color:var(--gp-ink);
+  font-size:13px;font-weight:400;letter-spacing:.02em;text-transform:uppercase;box-shadow:none;
+}
+html body.template-07 .btn:hover{background:var(--gp-ink);color:var(--gp-paper)}
+html body.template-07 .btn.btn-conversion,
+html body.template-07 .btn.btn-cart{background:var(--gp-ink);color:var(--gp-paper)}
+html body.template-07 .btn.btn-conversion:hover,
+html body.template-07 .btn.btn-cart:hover{background:var(--gp-hot);border-color:var(--gp-hot);color:var(--gp-ink)}
+
+/* 4. Horní pruh: černý, bílý text */
+html body.template-07 .top-navigation-bar{background:var(--gp-ink);color:var(--gp-paper);font-size:12px;letter-spacing:.02em}
 html body.template-07 .top-navigation-bar a,
-html body.template-07 .top-navigation-bar strong{color:#fff}
+html body.template-07 .top-navigation-bar strong{color:var(--gp-paper)}
 
-/* 4. Hlavička v buňkách */
-html body.template-07 header#header{background:var(--gp-cream);border-bottom:1px solid var(--gp-navy)}
-html body.template-07 #navigation .menu-level-1 > li{border-right:1px solid var(--gp-navy)}
+/* 5. Hlavička ve dvou řádcích: logo uprostřed + ikony vpravo, pod tím menu uprostřed.
+   Hlavička už není přilepená nahoře (v pevném stavu by se rozbila dvouřádková výška). */
+html body.template-07 header#header{
+  position:static !important;background:var(--gp-paper);border-bottom:1px solid var(--gp-ink);
+}
+html body.template-07 header#header .navigation-wrapper{
+  display:flex;flex-wrap:wrap;align-items:center;padding:0;
+}
+html body.template-07 header#header .site-name{
+  order:1;flex:1 1 0;text-align:center;margin:0;padding:14px 0 14px 160px;
+}
+html body.template-07 header#header .navigation-buttons{order:2;flex:0 0 160px;display:flex;justify-content:flex-end}
+html body.template-07 header#header nav#navigation{
+  order:3;flex:0 0 100%;border-top:1px solid var(--gp-ink);
+}
+html body.template-07 header#header .menu-helper{display:none}
+html body.template-07 #navigation .menu-level-1{display:flex;justify-content:center}
 html body.template-07 #navigation .menu-level-1 > li > a{
-  font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--gp-navy);
+  font-size:13px;font-weight:400;letter-spacing:.02em;text-transform:uppercase;color:var(--gp-ink);background:transparent;
 }
 html body.template-07 #navigation .menu-level-1 > li:hover > a,
-html body.template-07 #navigation .menu-level-1 > li.active > a{background:var(--gp-lav);color:var(--gp-navy)}
-html body.template-07 .navigation-buttons a.cart-count{background:var(--gp-navy)}
+html body.template-07 #navigation .menu-level-1 > li.active > a{
+  background:transparent;color:var(--gp-ink);text-decoration:underline;text-underline-offset:6px;
+}
+html body.template-07 .navigation-buttons a.toggle-window,
+html body.template-07 .navigation-buttons a.cart-count{background:transparent;color:var(--gp-ink)}
 
-/* 5. Úvodní banner: jeden velký pás přes celou šířku (podle varianty H).
-   Obrázky banneru se mění v administraci. Postranní dva bannery se schovají.
-   Text přes banner (extended-banner-texts) je připravený, až se vyplní v administraci. */
-html body.template-07 .banners-row > .col-sm-8{width:100%;max-width:100%;flex:0 0 100%;float:none}
+/* 6. Úvodní banner: jedna velká fotka přes celý sloupec, bez bočních bannerů */
+html body.template-07.type-index main#content{padding:0}
+html body.template-07 .banners-row{margin:0}
+html body.template-07 .banners-row > .col-sm-8{width:100%;max-width:100%;flex:0 0 100%;float:none;padding:0}
 html body.template-07 .banners-row > .col-sm-4{display:none}
 html body.template-07 .banners-row #carousel{
-  background:var(--gp-lav);border:1px solid var(--gp-navy);height:var(--gp-banner-h);position:relative;overflow:hidden;
+  height:var(--gp-hero-h);border:0;border-bottom:1px solid var(--gp-ink);background:var(--gp-page);
+  position:relative;overflow:hidden;
 }
 html body.template-07 .banners-row #carousel .carousel-inner,
 html body.template-07 .banners-row #carousel .item,
-html body.template-07 .banners-row #carousel .item > a{height:var(--gp-banner-h) !important}
+html body.template-07 .banners-row #carousel .item > a{height:var(--gp-hero-h) !important}
 html body.template-07 .banners-row #carousel .item > a{display:block;position:relative}
 html body.template-07 .banners-row #carousel .item img{
-  width:100% !important;height:var(--gp-banner-h) !important;max-width:none;object-fit:contain;object-position:right center;
+  width:100% !important;height:var(--gp-hero-h) !important;max-width:none;object-fit:cover;object-position:center;
 }
 html body.template-07 .banners-row #carousel .extended-banner-texts{
-  position:absolute;left:36px;top:50%;transform:translateY(-50%);max-width:46%;color:var(--gp-navy);
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);max-width:70%;text-align:center;color:var(--gp-paper);
 }
 html body.template-07 .banners-row #carousel a.carousel-control{
-  width:44px;height:44px;top:50%;margin-top:-22px;background:var(--gp-navy);color:#fff;opacity:1;border-radius:0;
+  width:44px;height:44px;top:50%;margin-top:-22px;background:var(--gp-ink);color:var(--gp-paper);
+  opacity:1;border-radius:50%;
 }
-html body.template-07 .benefitBanner__item{background:var(--gp-lav-t);border:1px solid var(--gp-navy)}
-html body.template-07 .benefitBanner__title{font-weight:500;color:var(--gp-navy)}
-html body.template-07 .banners-row .next-to-carousel-banners .banner-wrapper{border:1px solid var(--gp-navy)}
 
-/* 6. Nadpisy sekcí na úvodní straně */
-html body.template-07 .homepage-group-title{font-size:18px;margin:32px 0 12px}
-
-/* 7. Karty produktů */
-html body.template-07 .products-block .p{background:var(--gp-cream);border:1px solid var(--gp-navy);box-shadow:none}
-html body.template-07 .products-block .p a.image{background:#fff}
-html body.template-07 .products-block .p a.name{font-size:13px;font-weight:500;text-transform:none;color:var(--gp-navy)}
-html body.template-07 .products-block .p .price-final{font-weight:600;color:var(--gp-navy)}
-html body.template-07 .products-block .p .p-code{font-size:10px;color:var(--gp-navy);opacity:.6}
-/* tlačítko košíku = plné navy, „Detail“ = obrys */
-html body.template-07 .p-tools button.btn.btn-cart{background:var(--gp-navy);border:1.5px solid var(--gp-navy);color:#fff}
-html body.template-07 .p-tools button.btn.btn-cart:hover{background:var(--gp-lav);color:var(--gp-navy)}
-html body.template-07 .p-tools a.btn.btn-primary{
-  background:transparent;border:1.5px solid var(--gp-navy);color:var(--gp-navy);
-  font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+/* 7. Pás výhod: buňky oddělené černou linkou */
+html body.template-07 .benefitBanner{margin:0}
+html body.template-07 .benefitBanner__item{
+  background:var(--gp-paper);border:0;border-right:1px solid var(--gp-ink);border-bottom:1px solid var(--gp-ink);
+  border-radius:0;
 }
-html body.template-07 .p-tools a.btn.btn-primary:hover{background:var(--gp-navy);color:#fff}
+html body.template-07 .benefitBanner__title{font-weight:500;color:var(--gp-ink)}
 
-/* 8. Štítky: Novinka = mandarinka, Tip = levandule, Akce/Výprodej = navy */
-html body.template-07 .flag{font-size:10px;font-weight:500;letter-spacing:.04em;text-transform:none;background:var(--gp-navy);color:#fff}
-html body.template-07 .flag.flag-new{background:var(--gp-orange);color:var(--gp-navy)}
-html body.template-07 .flag.flag-tip{background:var(--gp-lav);color:var(--gp-navy)}
+/* 8. Nadpisy sekcí = samostatný řádek mezi linkami */
+html body.template-07 .homepage-group-title{
+  margin:0;padding:18px 20px;border-top:1px solid var(--gp-ink);border-bottom:1px solid var(--gp-ink);
+  font-size:24px;font-weight:400;text-transform:none;color:var(--gp-ink);
+}
 
-/* 9. Kategorie: levý sloupec */
-html body.template-07 .sidebar .box{border:1px solid var(--gp-navy);background:var(--gp-cream)}
+/* 9. Produkty na úvodní straně: stejná mřížka 4 sloupců, karty oddělené linkou */
+html body.template-07.type-index .products-block{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:0;
+}
+html body.template-07.type-index .products-block > .product{
+  width:auto;float:none;margin:0;padding:0;border-right:1px solid var(--gp-ink);border-bottom:1px solid var(--gp-ink);
+}
+html body.template-07.type-index .products-block .p,
+html body.template-07.type-index .products-block .p.big{
+  width:auto;height:auto;border:0;background:transparent;box-shadow:none;padding:12px;
+}
+html body.template-07.type-index .products-block .p a.image{
+  display:block;height:auto;aspect-ratio:1/1;background:#ececec;border-radius:6px;overflow:hidden;position:relative;
+}
+html body.template-07.type-index .products-block .p a.image img{
+  width:100%;height:100%;object-fit:contain;
+}
+html body.template-07.type-index .products-block .p a.name{
+  font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0;line-height:1.3;color:var(--gp-ink);
+}
+html body.template-07.type-index .products-block .p .price-final,
+html body.template-07.type-index .products-block .p .price{font-size:12px;font-weight:400;color:var(--gp-ink)}
+html body.template-07.type-index .products-block .p .p-tools{display:none}
+html body.template-07.type-index .products-block .p .p-code{display:none}
 
-/* 10. Zápatí */
-html body.template-07 footer#footer{background:var(--gp-navy);color:#fff}
-html body.template-07 footer#footer a{color:#fff}
+/* 10. Štítky (pilulky): sleva oranžová, novinka červenooranžová, ostatní černé */
+html body.template-07 .flag{
+  border-radius:20px;font-size:12px;font-weight:400;letter-spacing:0;text-transform:none;
+  background:var(--gp-ink);color:var(--gp-paper);padding:2px 10px;
+}
+html body.template-07 .flag.flag-action,
+html body.template-07 .flag.flag-custom1{background:var(--gp-sale);color:var(--gp-paper)}
+html body.template-07 .flag.flag-new{background:var(--gp-hot);color:var(--gp-paper)}
+
+/* 11. Úvodní text pod produkty: šedý blok na střed */
+html body.template-07 .welcome-wrapper{
+  margin:0;padding:64px 24px;text-align:center;background:var(--gp-page);border-top:1px solid var(--gp-ink);
+}
+html body.template-07 .welcome-wrapper h1,
+html body.template-07 .welcome-wrapper h2{font-size:28px;font-weight:400}
+
+/* 12. Zápatí: bílé, linka nahoře, odkazy černé */
+html body.template-07 footer#footer{background:var(--gp-paper);color:var(--gp-ink);border-top:1px solid var(--gp-ink)}
+html body.template-07 footer#footer a{color:var(--gp-ink)}

@@ -1,6 +1,6 @@
 /* ==========================================================================
    APARAT — bazar fotoaparátů, Shoptet šablona Techno (body.template-07)
-   Verze 1.6 — styl podle vzoru (Mori Film Lab): bílý sloupec v černých
+   Verze 2.0 — styl podle vzoru (Mori Film Lab): bílý sloupec v černých
    rámečcích na světle šedém pozadí, pilulková tlačítka, zaoblené fotky v kartách.
    Prefix "html body.template-07" je nutný, nativní CSS šablony jinak přebíjí.
    Zaměření: úvodní strana. Kategorie, detail a košík zatím jen dědí tokeny.
@@ -131,42 +131,42 @@ html body.template-07 .homepage-group-title{
 }
 
 /* 9. Produkty na úvodní straně: stejná mřížka 4 sloupců, karty oddělené linkou */
-html body.template-07.type-index .products-block{
+html body.template-07:is(.type-index,.type-category) .products-block{
   display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:0 -1px 0 0;
 }
-html body.template-07.type-index .products-block > .product{
+html body.template-07:is(.type-index,.type-category) .products-block > .product{
   width:auto;float:none;margin:0;padding:0;border-right:1px solid var(--gp-ink);border-bottom:1px solid var(--gp-ink);
 }
-html body.template-07.type-index .products-block .p,
-html body.template-07.type-index .products-block .p.big{
+html body.template-07:is(.type-index,.type-category) .products-block .p,
+html body.template-07:is(.type-index,.type-category) .products-block .p.big{
   width:auto;height:auto;border:0;background:transparent;box-shadow:none;padding:12px;
 }
-html body.template-07.type-index .products-block .p a.image{
-  display:block;height:auto;aspect-ratio:1/1;background:#ececec;border-radius:6px;overflow:hidden;position:relative;
+html body.template-07:is(.type-index,.type-category) .products-block .p a.image{
+  display:block;height:auto;aspect-ratio:1/1;background:#e9e9e9;border-radius:6px;overflow:hidden;position:relative;
 }
-html body.template-07.type-index .products-block .p a.image img{
-  width:100%;height:100%;object-fit:cover;
+html body.template-07:is(.type-index,.type-category) .products-block .p a.image img{
+  width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;
 }
-html body.template-07.type-index .products-block > .product.highlight-product{grid-column:auto !important;grid-row:auto !important}
-html body.template-07.type-index .products-block .p .p-in,
-html body.template-07.type-index .products-block .p .p-in-in,
-html body.template-07.type-index .products-block .p .p-bottom{height:auto;min-height:0;margin:0;padding:0}
-html body.template-07.type-index .products-block .p .p-in{padding-top:10px}
-html body.template-07.type-index .products-block .p a.name{display:block;height:auto;min-height:2.6em}
-html body.template-07.type-index .products-block .p a.name{
+html body.template-07:is(.type-index,.type-category) .products-block > .product.highlight-product{grid-column:auto !important;grid-row:auto !important}
+html body.template-07:is(.type-index,.type-category) .products-block .p .p-in,
+html body.template-07:is(.type-index,.type-category) .products-block .p .p-in-in,
+html body.template-07:is(.type-index,.type-category) .products-block .p .p-bottom{height:auto;min-height:0;margin:0;padding:0}
+html body.template-07:is(.type-index,.type-category) .products-block .p .p-in{padding-top:10px}
+html body.template-07:is(.type-index,.type-category) .products-block .p a.name{display:block;height:auto;min-height:2.6em}
+html body.template-07:is(.type-index,.type-category) .products-block .p a.name{
   font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0;line-height:1.3;color:var(--gp-ink);
 }
-html body.template-07.type-index .products-block .p .price-final,
-html body.template-07.type-index .products-block .p .price{font-size:12px;font-weight:400;color:var(--gp-ink)}
-html body.template-07.type-index .products-block .p .p-tools{display:none}
-html body.template-07.type-index .products-block .p .p-code{display:none}
+html body.template-07:is(.type-index,.type-category) .products-block .p .price-final,
+html body.template-07:is(.type-index,.type-category) .products-block .p .price{font-size:12px;font-weight:400;color:var(--gp-ink)}
+html body.template-07:is(.type-index,.type-category) .products-block .p .p-tools{display:none}
+html body.template-07:is(.type-index,.type-category) .products-block .p .p-code{display:none}
 
 @media (max-width:1199px){
-  html body.template-07.type-index .products-block{grid-template-columns:repeat(3,minmax(0,1fr))}
+  html body.template-07:is(.type-index,.type-category) .products-block{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 @media (max-width:767px){
   :root{--gp-hero-h:70vw}
-  html body.template-07.type-index .products-block{grid-template-columns:repeat(2,minmax(0,1fr))}
+  html body.template-07:is(.type-index,.type-category) .products-block{grid-template-columns:repeat(2,minmax(0,1fr))}
   html body.template-07 .homepage-group-title{font-size:20px;padding:14px 16px}
 }
 
@@ -189,3 +189,55 @@ html body.template-07 .welcome-wrapper h2{font-size:28px;font-weight:400}
 /* 12. Zápatí: bílé, linka nahoře, odkazy černé */
 html body.template-07 footer#footer{background:var(--gp-paper);color:var(--gp-ink);border-top:1px solid var(--gp-ink)}
 html body.template-07 footer#footer a{color:var(--gp-ink)}
+
+/* 13. KATEGORIE (podle vzoru Mori: velký nadpis, vlevo filtry, vpravo mřížka 3 sloupce s linkami) */
+html body.template-07.type-category .breadcrumbs{padding:12px 20px;border-bottom:1px solid var(--gp-ink);font-size:12px}
+html body.template-07.type-category main#content{padding:0}
+html body.template-07.type-category .category-top{padding:0;border-bottom:1px solid var(--gp-ink)}
+html body.template-07.type-category h1.category-title{
+  text-align:left;text-transform:uppercase;font-size:clamp(34px,5vw,64px);font-weight:300;line-height:1;
+  letter-spacing:-.02em;margin:0;padding:36px 24px 14px;
+}
+/* podkategorie = řada pilulek (bez obrázků) */
+html body.template-07.type-category ul.subcategories{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:6px 24px 24px;list-style:none}
+html body.template-07.type-category ul.subcategories > li{width:auto;float:none;padding:0;margin:0}
+html body.template-07.type-category ul.subcategories > li > a{
+  display:inline-block;border:1px solid var(--gp-ink);border-radius:var(--gp-pill);padding:6px 16px;background:transparent;
+}
+html body.template-07.type-category ul.subcategories .image{display:none}
+html body.template-07.type-category ul.subcategories .text{font-size:13px;color:var(--gp-ink);text-transform:none;padding:0;margin:0}
+html body.template-07.type-category ul.subcategories > li > a:hover{background:var(--gp-ink)}
+html body.template-07.type-category ul.subcategories > li > a:hover .text{color:var(--gp-paper)}
+/* řazení = pilulky vpravo */
+html body.template-07.type-category #category-header{padding:12px 24px;border-bottom:1px solid var(--gp-ink);background:transparent}
+html body.template-07.type-category .listSorting__controls{display:flex;justify-content:flex-end;gap:8px;margin:0;padding:0;list-style:none}
+html body.template-07.type-category .listSorting__control{
+  border:1px solid var(--gp-ink);border-radius:var(--gp-pill);padding:6px 16px;background:transparent;color:var(--gp-ink);font-size:13px;
+}
+html body.template-07.type-category .listSorting__control--current{background:var(--gp-ink);color:var(--gp-paper)}
+html body.template-07.type-category .category-content-wrapper{padding:0}
+/* mřížka 3 sloupce */
+html body.template-07.type-category .products-block{grid-template-columns:repeat(3,minmax(0,1fr))}
+html body.template-07.type-category .products-block .p a.name{font-size:13px;font-weight:400;text-transform:none}
+html body.template-07.type-category .products-block .p .price-final,
+html body.template-07.type-category .products-block .p .price{font-size:13px}
+html body.template-07.type-category .itemsTotal{text-align:left;font-size:12px;padding:16px 24px;border-top:1px solid var(--gp-ink);margin:0}
+html body.template-07.type-category .listingControls{margin:0}
+@media (max-width:767px){
+  html body.template-07.type-category .products-block{grid-template-columns:repeat(2,minmax(0,1fr))}
+  html body.template-07.type-category h1.category-title{padding:24px 16px 10px}
+  html body.template-07.type-category ul.subcategories{padding:4px 16px 16px}
+  html body.template-07.type-category #category-header{padding:10px 16px}
+}
+/* levý sloupec jen na desktopu: užší, s linkou, boxy bez pozadí */
+@media (min-width:992px){
+  html body.template-07.type-category aside.sidebar.sidebar-left{
+    width:260px;flex:0 0 260px;border-right:1px solid var(--gp-ink);background:transparent;
+  }
+  html body.template-07.type-category main#content{flex:1 1 0;min-width:0;width:auto}
+  html body.template-07.type-category .sidebar-inner{padding:0}
+  html body.template-07.type-category .sidebar .box{
+    background:transparent;border:0;border-bottom:1px solid var(--gp-ink);border-radius:0;margin:0;padding:16px 20px;
+  }
+  html body.template-07.type-category .sidebar .box-onlinePayments{display:none}
+}

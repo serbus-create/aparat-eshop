@@ -1,6 +1,6 @@
 /* ==========================================================================
    APARAT — bazar fotoaparátů, Shoptet šablona Techno (body.template-07)
-   Verze 2.0 — styl podle vzoru (Mori Film Lab): bílý sloupec v černých
+   Verze 2.1 — styl podle vzoru (Mori Film Lab): bílý sloupec v černých
    rámečcích na světle šedém pozadí, pilulková tlačítka, zaoblené fotky v kartách.
    Prefix "html body.template-07" je nutný, nativní CSS šablony jinak přebíjí.
    Zaměření: úvodní strana. Kategorie, detail a košík zatím jen dědí tokeny.
@@ -28,7 +28,7 @@ html body.template-07 .overall-wrapper{
   max-width:min(1358px,94%);margin:0 auto;background:var(--gp-paper);
   border-left:1px solid var(--gp-ink);border-right:1px solid var(--gp-ink);
 }
-html body.template-07 #content-wrapper{background:transparent}
+html body.template-07 #content-wrapper{background:transparent;margin-top:0;padding-top:0}  /* hlavička už není přilepená → bez kompenzace její výšky */
 html body.template-07 .overall-wrapper .container{width:100%;max-width:100%}
 html body.template-07 h1,html body.template-07 .h1,
 html body.template-07 h2,html body.template-07 h3,
@@ -210,6 +210,7 @@ html body.template-07.type-category ul.subcategories > li > a:hover{background:v
 html body.template-07.type-category ul.subcategories > li > a:hover .text{color:var(--gp-paper)}
 /* řazení = pilulky vpravo */
 html body.template-07.type-category #category-header{padding:12px 24px;border-bottom:1px solid var(--gp-ink);background:transparent}
+html body.template-07.type-category #category-header{display:flex;justify-content:flex-end}
 html body.template-07.type-category .listSorting__controls{display:flex;justify-content:flex-end;gap:8px;margin:0;padding:0;list-style:none}
 html body.template-07.type-category .listSorting__control{
   border:1px solid var(--gp-ink);border-radius:var(--gp-pill);padding:6px 16px;background:transparent;color:var(--gp-ink);font-size:13px;
@@ -240,4 +241,10 @@ html body.template-07.type-category .listingControls{margin:0}
     background:transparent;border:0;border-bottom:1px solid var(--gp-ink);border-radius:0;margin:0;padding:16px 20px;
   }
   html body.template-07.type-category .sidebar .box-onlinePayments{display:none}
+  /* filtr ceny: nativně tmavý blok → světlý s černými úchyty */
+  html body.template-07.type-category .sidebar .slider-wrapper,
+  html body.template-07.type-category .sidebar .slider-content{background:transparent;color:var(--gp-ink)}
+  html body.template-07.type-category .sidebar .ui-slider{background:#e9e9e9}
+  html body.template-07.type-category .sidebar .ui-slider-range,
+  html body.template-07.type-category .sidebar .ui-slider-handle{background:var(--gp-ink);border-color:var(--gp-ink)}
 }

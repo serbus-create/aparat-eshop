@@ -1,6 +1,6 @@
 /* ==========================================================================
    APARAT — bazar fotoaparátů, Shoptet šablona Techno (body.template-07)
-   Verze 1.1 — styl podle vzoru (Mori Film Lab): bílý sloupec v černých
+   Verze 1.2 — styl podle vzoru (Mori Film Lab): bílý sloupec v černých
    rámečcích na světle šedém pozadí, pilulková tlačítka, zaoblené fotky v kartách.
    Prefix "html body.template-07" je nutný, nativní CSS šablony jinak přebíjí.
    Zaměření: úvodní strana. Kategorie, detail a košík zatím jen dědí tokeny.
@@ -60,10 +60,12 @@ html body.template-07 header#header{
 html body.template-07 header#header .navigation-wrapper{
   display:flex;flex-wrap:wrap;align-items:center;padding:0;
 }
+/* Logo musí zůstat úzké (nativní JS ořezávání menu měří, kolik místa zbývá vedle loga),
+   proto ho vystředíme okrajem, ne roztažením. */
 html body.template-07 header#header .site-name{
-  order:1;flex:1 1 0;text-align:center;margin:0;padding:14px 0 14px 160px;
+  order:1;flex:0 0 auto;margin:0 0 0 calc(50% - 100px);padding:14px 0;
 }
-html body.template-07 header#header .navigation-buttons{order:2;flex:0 0 160px;display:flex;justify-content:flex-end}
+html body.template-07 header#header .navigation-buttons{order:2;flex:0 0 auto;margin-left:auto;display:flex;justify-content:flex-end}
 html body.template-07 header#header nav#navigation{
   order:3;flex:0 0 100%;border-top:1px solid var(--gp-ink);
 }

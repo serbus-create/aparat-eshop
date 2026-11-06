@@ -1,6 +1,6 @@
 /* ==========================================================================
    APARAT — bazar fotoaparátů, Shoptet šablona Techno (body.template-07)
-   Verze 2.1 — styl podle vzoru (Mori Film Lab): bílý sloupec v černých
+   Verze 3.0 — styl podle vzoru (Mori Film Lab): bílý sloupec v černých
    rámečcích na světle šedém pozadí, pilulková tlačítka, zaoblené fotky v kartách.
    Prefix "html body.template-07" je nutný, nativní CSS šablony jinak přebíjí.
    Zaměření: úvodní strana. Kategorie, detail a košík zatím jen dědí tokeny.
@@ -247,4 +247,76 @@ html body.template-07.type-category .listingControls{margin:0}
   html body.template-07.type-category .sidebar .ui-slider{background:#e9e9e9}
   html body.template-07.type-category .sidebar .ui-slider-range,
   html body.template-07.type-category .sidebar .ui-slider-handle{background:var(--gp-ink);border-color:var(--gp-ink)}
+}
+
+/* 14. DETAIL PRODUKTU (podle vzoru Mori: vlevo čtvercová fotka, vpravo název, cena, množství + košík, popis) */
+html body.template-07.type-detail .breadcrumbs{padding:12px 20px;border-bottom:1px solid var(--gp-ink);font-size:12px}
+html body.template-07.type-detail aside.sidebar{display:none}
+html body.template-07.type-detail main#content{padding:0;width:100%;flex:1 1 100%}
+html body.template-07.type-detail .p-detail{padding:0;margin:0}
+html body.template-07.type-detail form#product-detail-form{
+  display:flex;flex-direction:column;padding:0;margin:0;
+}
+html body.template-07.type-detail form#product-detail-form > span,
+html body.template-07.type-detail form#product-detail-form > input,
+html body.template-07.type-detail form#product-detail-form > .p-intro{display:none}
+html body.template-07.type-detail .p-image-wrapper,
+html body.template-07.type-detail .p-info-wrapper,
+html body.template-07.type-detail .p-details-bottom{width:auto;float:none;margin:0;max-width:none}
+html body.template-07.type-detail .p-image-wrapper{padding:20px}
+html body.template-07.type-detail .p-image{position:relative}
+html body.template-07.type-detail a.p-main-image{
+  display:block;aspect-ratio:1/1;height:auto;background:#e9e9e9;border-radius:6px;overflow:hidden;
+}
+html body.template-07.type-detail a.p-main-image img{
+  width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;
+}
+html body.template-07.type-detail .p-info-wrapper{border-bottom:1px solid var(--gp-ink)}
+html body.template-07.type-detail .p-info-wrapper .p-details-wrapper{padding:20px 24px}
+html body.template-07.type-detail .p-info-wrapper h1{
+  font-size:clamp(26px,2.4vw,34px);font-weight:400;line-height:1.1;letter-spacing:-.01em;margin:0 0 12px;text-transform:none;
+}
+html body.template-07.type-detail .p-info-wrapper .p-code{font-size:12px;color:var(--gp-grey)}
+html body.template-07.type-detail .p-short-description{font-size:14px;line-height:1.5}
+html body.template-07.type-detail .p-details-bottom{display:flex;flex-direction:column}
+html body.template-07.type-detail .p-details-bottom > .p-details{
+  order:1;display:flex;flex-direction:column;padding:20px 24px;border-bottom:1px solid var(--gp-ink);
+}
+html body.template-07.type-detail .p-details-bottom > .p-details > .price{order:-1;display:flex;flex-direction:column;gap:14px;margin:0;padding:0}
+html body.template-07.type-detail .p-details-bottom > .narrow-visible{order:2;padding:20px 24px}
+html body.template-07.type-detail .p-details-bottom .description p{font-size:14px;line-height:1.55}
+html body.template-07.type-detail strong.price-final{font-size:24px;font-weight:600;color:var(--gp-ink)}
+/* množství jako pilulka − 1 + a tlačítko do košíku */
+html body.template-07.type-detail .add-to-cart{display:flex;gap:8px;align-items:stretch;width:100%;height:auto;margin:0}
+html body.template-07.type-detail .add-to-cart .quantity{
+  display:flex;align-items:center;justify-content:space-between;width:132px;height:48px;padding:0 6px;
+  border:1px solid var(--gp-ink);border-radius:var(--gp-pill);background:transparent;position:relative;
+}
+html body.template-07.type-detail .add-to-cart .quantity input.amount{
+  order:2;width:40px;border:0;background:transparent;text-align:center;font-size:14px;padding:0;box-shadow:none;
+}
+html body.template-07.type-detail .add-to-cart .quantity button.decrease{order:1}
+html body.template-07.type-detail .add-to-cart .quantity button.increase{order:3}
+html body.template-07.type-detail .add-to-cart .quantity button{
+  position:static;width:32px;height:32px;border:0;background:transparent;padding:0;font-size:0;line-height:1;cursor:pointer;
+}
+html body.template-07.type-detail .add-to-cart .quantity button::after{content:none}
+html body.template-07.type-detail .add-to-cart .quantity button::before{
+  font-family:var(--gp-font);font-size:22px;color:var(--gp-ink);content:'+';
+}
+html body.template-07.type-detail .add-to-cart .quantity button.decrease::before{content:'\2212'}
+html body.template-07.type-detail .add-to-cart button.add-to-cart-button{
+  flex:1;height:48px;border-radius:var(--gp-pill);font-size:14px;
+}
+@media (min-width:992px){
+  html body.template-07.type-detail form#product-detail-form{
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto 1fr;align-items:stretch;
+  }
+  html body.template-07.type-detail .p-image-wrapper{grid-column:1;grid-row:1 / span 2;border-right:1px solid var(--gp-ink)}
+  html body.template-07.type-detail .p-info-wrapper{grid-column:2;grid-row:1}
+  html body.template-07.type-detail .p-details-bottom{grid-column:2;grid-row:2}
+}
+@media (max-width:991px){
+  html body.template-07.type-detail .p-info-wrapper,
+  html body.template-07.type-detail .p-details-bottom > .p-details{border-top:1px solid var(--gp-ink)}
 }

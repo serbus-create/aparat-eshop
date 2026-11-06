@@ -1,6 +1,6 @@
 /* ==========================================================================
    APARAT — bazar fotoaparátů, Shoptet šablona Techno (body.template-07)
-   Verze 1.0 — styl podle vzoru (Mori Film Lab): bílý sloupec v černých
+   Verze 1.1 — styl podle vzoru (Mori Film Lab): bílý sloupec v černých
    rámečcích na světle šedém pozadí, pilulková tlačítka, zaoblené fotky v kartách.
    Prefix "html body.template-07" je nutný, nativní CSS šablony jinak přebíjí.
    Zaměření: úvodní strana. Kategorie, detail a košík zatím jen dědí tokeny.
@@ -29,6 +29,7 @@ html body.template-07 .overall-wrapper{
   border-left:1px solid var(--gp-ink);border-right:1px solid var(--gp-ink);
 }
 html body.template-07 #content-wrapper{background:transparent}
+html body.template-07 .overall-wrapper .container{width:100%;max-width:100%}
 html body.template-07 h1,html body.template-07 .h1,
 html body.template-07 h2,html body.template-07 h3,
 html body.template-07 h4,html body.template-07 .h4{
@@ -66,8 +67,7 @@ html body.template-07 header#header .navigation-buttons{order:2;flex:0 0 160px;d
 html body.template-07 header#header nav#navigation{
   order:3;flex:0 0 100%;border-top:1px solid var(--gp-ink);
 }
-html body.template-07 header#header .menu-helper{display:none}
-html body.template-07 #navigation .menu-level-1{display:flex;justify-content:center}
+/* Menu (fitted) necháme nativní — Shoptet JS ho měří; skrytí .menu-helper nebo flex na ul ho schová */
 html body.template-07 #navigation .menu-level-1 > li > a{
   font-size:13px;font-weight:400;letter-spacing:.02em;text-transform:uppercase;color:var(--gp-ink);background:transparent;
 }
@@ -101,6 +101,8 @@ html body.template-07 .banners-row #carousel a.carousel-control{
   width:44px;height:44px;top:50%;margin-top:-22px;background:var(--gp-ink);color:var(--gp-paper);
   opacity:1;border-radius:50%;
 }
+html body.template-07 .banners-row #carousel a.carousel-control.left{left:14px}
+html body.template-07 .banners-row #carousel a.carousel-control.right{right:14px}
 
 /* 7. Pás výhod: buňky oddělené černou linkou */
 html body.template-07 .benefitBanner{margin:0}
